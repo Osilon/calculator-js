@@ -12,6 +12,7 @@ const clear = document.querySelector(".clear");
 const del = document.querySelector(".delete");
 const equal = document.querySelector(".result");
 const plusMinus = document.querySelector(".plus-minus");
+const dot = document.querySelector(".comma");
 
 const nine = document.querySelector(".nine");
 const eight = document.querySelector(".eight");
@@ -88,12 +89,19 @@ clear.addEventListener("click", () => {
 });
 
 del.addEventListener("click", () => {
-  let array = [];
-  for(let i = 0; i < displayValue.length; i ++){
-    array[i] = displayValue[i];
+  for(let i = 0; i < operation.innerHTML.length; i++){
+    if(operation.innerHTML[i] === "+"){
+      array = [];
+      operation.innerHTML = "";
+      displayValue = "";
+    }
   }
-  array.pop()
-  let final = array.join("");
+  let array1 = [];
+  for(let i = 0; i < displayValue.length; i ++){
+    array1[i] = displayValue[i];
+  }
+  array1.pop()
+  let final = array1.join("");
   displayValue = "";
   displayValue = final;
   operation.innerHTML = "";
@@ -102,7 +110,6 @@ del.addEventListener("click", () => {
 
 nine.addEventListener("click", () => {
   displayValue += "9";
-  console.log(displayValue);
   operation.innerHTML += "9";
 });
 
@@ -153,35 +160,59 @@ zero.addEventListener("click", () => {
 
 
 plus.addEventListener("click", () => {
-  operation.innerHTML = "";
+  if(operator === undefined){
+    operator = "+";
+  }
   array.push(displayValue);
   displayValue = "";
+  operation.innerHTML = "";
+  operation.innerHTML += makeCalculation(operator, array) + " + ";
+  let res = makeCalculation(operator, array);
+  array = [];
+  array.push(res);
   operator = "+";
-  operation.innerHTML = makeCalculation(operator, array);
 });
 
 minus.addEventListener("click", () => {
-  operation.innerHTML = "";
+  if(operator === undefined){
+    operator = "-";
+  }
   array.push(displayValue);
   displayValue = "";
+  operation.innerHTML = "";
+  operation.innerHTML += makeCalculation(operator, array) + " - ";
+  let res = makeCalculation(operator, array);
+  array = [];
+  array.push(res);
   operator = "-";
-  operation.innerHTML = makeCalculation(operator, array);
 });
 
 x.addEventListener("click", () => {
-  operation.innerHTML = "";
+  if(operator === undefined){
+    operator = "*";
+  }
   array.push(displayValue);
   displayValue = "";
+  operation.innerHTML = "";
+  operation.innerHTML += makeCalculation(operator, array) + " x ";
+  let res = makeCalculation(operator, array);
+  array = [];
+  array.push(res);
   operator = "*";
-  operation.innerHTML = makeCalculation(operator, array);
 });
 
 xOp.addEventListener("click", () => {
-  operation.innerHTML = "";
+  if(operator === undefined){
+    operator = "/";
+  }
   array.push(displayValue);
   displayValue = "";
+  operation.innerHTML = "";
+  operation.innerHTML += makeCalculation(operator, array) + " ÷ ";
+  let res = makeCalculation(operator, array);
+  array = [];
+  array.push(res);
   operator = "/";
-  operation.innerHTML = makeCalculation(operator, array);
 });
 
 
@@ -201,4 +232,25 @@ plusMinus.addEventListener("click", () => {
   let num = -1 * displayValue;
   operation.innerHTML = String(num);
   displayValue = num;
+});
+
+dot.addEventListener("click", () => {
+  let sum = 0;
+  for(let i = 0; i < operation.innerHTML.length; i++){
+    if(operation.innerHTML[i] === "." && sum === 0){
+      sum += 1;
+      operation.innerHTML += ".";
+      displayValue += ".";
+    }
+  }
+
+  if(sum === 0){
+    operation.innerHTML += ".";
+    displayValue += ".";
+  }
+  else{
+    operation.innerHTML = "";
+    displayValue = "";
+    array = [];
+  }
 });
