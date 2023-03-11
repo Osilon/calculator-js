@@ -1,0 +1,101 @@
+body{
+  background-color: black;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  border: gray solid 2px;
+  width: 342px;
+  height: 430px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+}
+
+.row-one{
+  display: flex;
+  justify-content: flex-end;
+  border: gray solid 2px;
+  height: 60px;
+  background: gray;
+  font-size: 24px;
+}
+
+.row-two{
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-three{
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-four{
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-five{
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-six{
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculator button{
+  border: gray solid 1px;
+  font-size: 16px;
+}
+
+.calculator button:hover{
+  background-color: gray;
+  border: white solid 2px;
+}
+
+.row-two button{
+  height: 74px;
+}
+
+.row-three button{
+  width: 85.5px;
+  height: 74px;
+}
+
+.row-four button{
+  width: 85.5px;
+  height: 74px;
+}
+
+.row-five button{
+  width: 85.5px;
+  height: 74px;
+}
+
+.row-six button{
+  width: 85.5px;
+  height: 74px;
+}
+
+.add{
+  width: 85.5px;
+}
+
+.clear{
+  width: 128.25px;
+}
+
+.delete{
+  width: 128.25px;
+}
+
+.operation{
+  margin-top: auto;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
