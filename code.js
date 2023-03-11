@@ -1,11 +1,8 @@
 //Variables
-/*let operator = prompt("Select the operator: + - * /", "");
-let num1 = prompt("Write the first number:", "");
-let num2 = prompt("Write the second number:", "");*/
-
 let displayValue = "";
 let array = [];
 let operator;
+let hasDot = false;
 
 const operation = document.querySelector(".operation");
 const clear = document.querySelector(".clear");
@@ -86,6 +83,7 @@ clear.addEventListener("click", () => {
   displayValue = "";
   operation.innerHTML = "";
   array = [];
+  hasDot = false;
 });
 
 del.addEventListener("click", () => {
@@ -94,6 +92,7 @@ del.addEventListener("click", () => {
       array = [];
       operation.innerHTML = "";
       displayValue = "";
+      hasDot = false;
     }
   }
   let array1 = [];
@@ -171,6 +170,7 @@ plus.addEventListener("click", () => {
   array = [];
   array.push(res);
   operator = "+";
+  hasDot = false;
 });
 
 minus.addEventListener("click", () => {
@@ -185,6 +185,7 @@ minus.addEventListener("click", () => {
   array = [];
   array.push(res);
   operator = "-";
+  hasDot = false;
 });
 
 x.addEventListener("click", () => {
@@ -199,6 +200,7 @@ x.addEventListener("click", () => {
   array = [];
   array.push(res);
   operator = "*";
+  hasDot = false;
 });
 
 xOp.addEventListener("click", () => {
@@ -213,6 +215,7 @@ xOp.addEventListener("click", () => {
   array = [];
   array.push(res);
   operator = "/";
+  hasDot = false;
 });
 
 
@@ -235,22 +238,9 @@ plusMinus.addEventListener("click", () => {
 });
 
 dot.addEventListener("click", () => {
-  let sum = 0;
-  for(let i = 0; i < operation.innerHTML.length; i++){
-    if(operation.innerHTML[i] === "." && sum === 0){
-      sum += 1;
-      operation.innerHTML += ".";
-      displayValue += ".";
-    }
-  }
-
-  if(sum === 0){
-    operation.innerHTML += ".";
+  if (!hasDot) {
     displayValue += ".";
-  }
-  else{
-    operation.innerHTML = "";
-    displayValue = "";
-    array = [];
+    operation.innerHTML += ".";
+    hasDot = true;
   }
 });
