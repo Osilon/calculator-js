@@ -1,2 +1,2 @@
-A simple calculator made with javascript.
+A simple calculator made with javascript. <br />
 #TheOdinProject
